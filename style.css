@@ -1,4 +1,4 @@
-/* Fuel Games site: the game's own dark look, readable in light mode too. */
+/* Yatan Tech site: shared look for every game page. */
 :root { --bg: #F4F1EA; --card: #FFFFFF; --text: #1B2335; --soft: #5B6478; --accent: #169C6B; --line: #E3DED2; color-scheme: light; }
 @media (prefers-color-scheme: dark) { :root { --bg: #101623; --card: #1D2535; --text: #FFFFFF; --soft: #B8C0D0; --accent: #5FE0B0; --line: #263247; color-scheme: dark; } }
 * { box-sizing: border-box; }
