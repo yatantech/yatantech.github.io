@@ -1,0 +1,3 @@
+# app-ads.txt for Fuel Games (Fuel Line)
+# Paste the lines from the LevelPlay dashboard here (Settings > app-ads.txt), one per line.
+# They look like:  <ad system domain>, <your account id>, DIRECT or RESELLER, <certification id>
