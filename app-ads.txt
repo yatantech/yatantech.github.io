@@ -1,4 +1,4 @@
-# app-ads.txt for Yatan Tech (Fuel Line). Source: Unity Monetization > Settings > Organization > App-ads.txt, copied 16 Nov 2026.
+# app-ads.txt for Yatan Tech (Fuel Lines). Source: Unity Monetization > Settings > Organization > App-ads.txt, copied 16 Nov 2026.
 # Check that page monthly: the list of sellers changes over time.
 OWNERDOMAIN=yatantech.github.io
 kidoz.net, 14260, RESELLER, a109366414b7335e
