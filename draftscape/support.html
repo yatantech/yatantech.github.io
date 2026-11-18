@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<title>Draftscape support</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+<style>
+:root { color-scheme: light; --navy:#1C2646; --soft:#46536F; --blue:#2458C6; --red:#D9432B; --tint:#EEF3FC; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #FFFFFF; }
+body { color: var(--navy); font-family: "Fredoka", "Nunito", system-ui, -apple-system, sans-serif; font-size: 17px; line-height: 1.45; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.wrap { width: 100%; max-width: 520px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.bar { position: sticky; top: 0; z-index: 5; background: #FFFFFF; border-bottom: 1px solid #E1E7F2; }
+.bar .wrap { height: 60px; padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; }
+.bar .title { text-align: center; font-size: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.back { width: 44px; height: 44px; display: grid; place-items: center; color: inherit; }
+.doc { padding-top: 22px; padding-bottom: 8px; display: grid; gap: 12px; }
+.doc > * { min-width: 0; }
+.doc h1 { margin: 0; font-size: 30px; line-height: 1.1; font-weight: 700; text-wrap: balance; }
+.doc h2 { margin: 16px 0 0; font-size: 22px; line-height: 1.15; font-weight: 700; }
+.doc p { margin: 0; overflow-wrap: anywhere; }
+.doc .soft { color: var(--soft); }
+.doc a { color: var(--blue); font-weight: 500; }
+.doc strong { font-weight: 600; }
+.doc ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.card { padding: 16px; border-radius: 18px; background: var(--tint); display: grid; gap: 12px; }
+.foot { display: flex; justify-content: center; gap: 12px; padding: 14px 0 24px; }
+.foot a { display: flex; align-items: center; min-height: 44px; padding: 0 14px; font-size: 17px; font-weight: 600; color: inherit; }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="back" id="back" href="./" aria-label="Back"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a><span class="title">Support</span></div></header>
+<main class="wrap doc">
+<h1>Draftscape support</h1>
+  <p class="soft">Something not working, or an idea for the game? Write to us and we will get back to you.</p>
+  <div class="card">
+    <p><strong>Email:</strong> <a href="mailto:yatantech@gmail.com?subject=Draftscape">yatantech@gmail.com</a></p>
+    <p class="soft">It helps to include your phone model and the game version (shown at the bottom of the pause screen).</p>
+  </div>
+
+  <h2>Common questions</h2>
+  <div class="card">
+    <p><strong>How do hearts work?</strong><br>You have 3 hearts on each sheet. Lose one and you go back to the last push pin. Reaching a new push pin fills your hearts again.</p>
+    <p><strong>What are pencils?</strong><br>Pencils are retries. When your hearts run out, a retry uses a pencil. You have 3, and all of them come back 4 hours after the first one is used. You can also watch a short ad to get them back at once. Sheets 1 to 15 never use a pencil.</p>
+    <p><strong>How do hints work?</strong><br>Tap the light bulb to see the next step. You have 3 hints, and they come back after 4 hours. You can also watch a short video for 3 more.</p>
+    <p><strong>How do I walk?</strong><br>Hold the round arrow buttons at the bottom right. Tap forward twice and hold to go at double speed. On eraser sheets you run by yourself, so draw fast.</p>
+    <p><strong>Why was my line refused?</strong><br>Green ink needs both ends on something solid. Amber rope must start on a clip or a hook. Some areas are marked as no-drawing zones.</p>
+    <p><strong>Can I get ink back?</strong><br>No. Press and hold a line to erase it, but the ink it used stays spent, so plan each line.</p>
+    <p><strong>How do I change my privacy choices?</strong><br>Open the pause screen and tap "Privacy choices". This option appears where the law asks us to offer it.</p>
+    <p><strong>Will I lose my progress if I uninstall?</strong><br>Yes. Your progress is saved only on your phone, so uninstalling the game deletes it.</p>
+  </div>
+</main>
+<footer class="wrap foot"><a href="privacy.html">Privacy</a><a href="support.html">Support</a></footer>
+<script>document.getElementById("back").addEventListener("click", function (e) { if (document.referrer.indexOf(location.origin) === 0 && history.length > 1) { e.preventDefault(); history.back(); } });</script>
+</body>
+</html>
