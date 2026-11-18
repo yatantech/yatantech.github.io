@@ -129,7 +129,7 @@ var PLAY_PUBLIC = false;
 var GAME = "jelly-nap", PKG = "com.yatantech.jellynap.game", GROUP = "https://groups.google.com/g/yatantech-testers";
 var STORE = "https://play.google.com/store/apps/details?id=" + PKG;
 var STEPS = [
-  { key: "yt-group", title: "Join our testers group", hint: "This unlocks the early version of the game for you.", chip: "Join group", label: "Join the group", url: GROUP },
+  { key: "yt-group-" + GAME, title: "Join our testers group", hint: "This unlocks the early version of the game for you.", chip: "Join group", label: "Join the group", url: GROUP },
   { key: "yt-opt-" + GAME, title: "Become a tester", hint: "One tap tells Google Play you want the game.", chip: "Become a tester", label: "Become a tester", url: "https://play.google.com/apps/testing/" + PKG },
   { key: "yt-inst-" + GAME, title: "Install the game", hint: "Google Play opens with the game ready to install.", chip: "Install", label: "Open Google Play", url: STORE }
 ];
@@ -153,7 +153,7 @@ function renderCtas() {
   function ios() { if (APP_STORE) { var a = el("a", "cta", "Download on the App Store"); a.href = APP_STORE; box.appendChild(a); } else { box.appendChild(el("div", "cta off", "Coming soon to the App Store")); } }
   function android() {
     if (PLAY_PUBLIC) { var p = el("a", "cta", "Get it free on Android"); p.href = STORE; box.appendChild(p); }
-    else if (ANDROID_TEST) { var a = el("a", "cta", "Get it free on Android"); a.href = ytNeedsChrome ? ytChromeLink("?steps=1") : "#steps"; if (!ytNeedsChrome) a.addEventListener("click", function () { enteredFromPage = true; }); box.appendChild(a); }
+    else if (ANDROID_TEST) { var a = el("a", "cta", ytNeedsChrome ? "Open in Chrome to get it" : "Get it free on Android"); a.href = ytNeedsChrome ? ytChromeLink("?steps=1") : "#steps"; if (!ytNeedsChrome) a.addEventListener("click", function () { enteredFromPage = true; }); box.appendChild(a); if (ytNeedsChrome) box.appendChild(el("p", "warn", "Google sign-in may not work inside this app, so the steps continue in Chrome.")); }
     else { box.appendChild(el("div", "cta off", "Android version coming soon")); }
   }
   if (isIos) ios(); else if (isAndroid) android(); else { android(); ios(); }
