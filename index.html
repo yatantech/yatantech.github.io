@@ -91,6 +91,7 @@ html:has(.home-page), .home-page { background: var(--pale); }
 .hub h1 { font-size: 34px; line-height: 1.08; font-weight: 700; }
 .hub > p { margin-bottom: 8px; font-size: 18px; color: var(--soft); }
 </style>
+<script src="track.js"></script>
 </head>
 <body class="home-page">
 <header class="home-band"><div class="wrap home-top"><p>Yatan Tech</p><h1>Pick a game and start playing</h1></div></header>
@@ -106,7 +107,7 @@ html:has(.home-page), .home-page { background: var(--pale); }
 var YT_Q = new URLSearchParams(location.search), YT_UA = navigator.userAgent || "";
 function ytRealChrome(u) { return /Chrome\/\d+/.test(u) && !/; wv\)|Instagram|FBAN|FBAV|FB_IAB|FB4A|Musical_ly|TikTok|BytedanceWebview|Snapchat|Line\/|SamsungBrowser|EdgA|OPR\/|YaBrowser|MiuiBrowser|HeyTapBrowser|UCBrowser|DuckDuckGo/.test(u); }
 var ytNeedsChrome = YT_Q.get("inapp") === "1" || (/Android/.test(YT_UA) && !ytRealChrome(YT_UA) && YT_Q.get("nochrome") !== "1");
-function ytChromeLink(search) { var base = location.host + location.pathname, s = search || ""; var back = "https://" + base + (s ? s + "&" : "?") + "nochrome=1"; return "intent://" + base + s + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(back) + ";end"; }
+function ytChromeLink(search) { var base = location.host + location.pathname, s = search || ""; var ref = window.YT_SRC || YT_Q.get("ref"); if (ref && ref !== "direct" && !/[?&]ref=/.test(s)) s += (s ? "&" : "?") + "ref=" + encodeURIComponent(ref); var back = "https://" + base + (s ? s + "&" : "?") + "nochrome=1"; return "intent://" + base + s + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(back) + ";end"; }
 (function () {
   if (!ytNeedsChrome || YT_Q.get("inapp") === "1") return;
   try { if (sessionStorage.getItem("yt-chrome-tried")) return; sessionStorage.setItem("yt-chrome-tried", "1"); } catch (e) { return; }
