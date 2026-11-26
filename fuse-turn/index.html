@@ -29,6 +29,7 @@ button { font-family: inherit; }
 .cta { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 58px; padding: 8px 16px; border: 0; border-radius: 16px; background: var(--blue); color: #FFFFFF; font-size: 20px; font-weight: 700; text-align: center; text-decoration: none; cursor: pointer; }
 .cta.alt { background: #FFFFFF; color: var(--blue); box-shadow: inset 0 0 0 2px var(--line); }
 .note { margin: 2px 0 0; font-size: 15px; color: var(--soft); text-align: center; }
+.cta.gray { background: #E4E8EF; color: var(--navy); }
 .cta.off { background: var(--empty); color: var(--soft); cursor: default; }
 .foot { display: flex; justify-content: center; gap: 12px; padding: 14px 0 24px; }
 .foot a { display: flex; align-items: center; min-height: 44px; padding: 0 14px; font-size: 17px; font-weight: 600; }
@@ -158,13 +159,13 @@ function renderCtas() {
   function web(primary) { if (!WEB) return; var w = el("a", primary ? "cta" : "cta alt", primary ? "Play free in your browser" : "Or play in your browser"); w.href = WEB; w.target = "_blank"; w.rel = "noopener"; box.appendChild(w); }
   function soon() { if (!APP_STORE) box.appendChild(el("p", "note", WEB ? "Coming soon to the App Store. Play it free in your browser now: every game you play helps us launch on the App Store sooner." : "Coming soon to the App Store")); }
   function ios() { if (APP_STORE) { var a = el("a", "cta", "Download on the App Store"); a.href = APP_STORE; box.appendChild(a); } else { box.appendChild(el("div", "cta off", "Coming soon to the App Store")); } }
-  function android() {
-    if (PLAY_PUBLIC) { var p = el("a", "cta", "Get it free on Android"); p.href = STORE; box.appendChild(p); }
-    else if (ANDROID_TEST) { var a = el("a", "cta", ytNeedsChrome ? "Open in Chrome to get it" : "Get it free on Android"); a.href = ytNeedsChrome ? ytChromeLink("?steps=1") : "#steps"; if (!ytNeedsChrome) a.addEventListener("click", function () { enteredFromPage = true; }); box.appendChild(a); if (ytNeedsChrome) box.appendChild(el("p", "warn", "Google sign-in may not work inside this app, so the steps continue in Chrome.")); }
+  function android(cls) { cls = cls || "cta";
+    if (PLAY_PUBLIC) { var p = el("a", cls, "Download on Android"); p.href = STORE; box.appendChild(p); }
+    else if (ANDROID_TEST) { var a = el("a", cls, ytNeedsChrome ? "Open in Chrome to get it" : "Download on Android"); a.href = ytNeedsChrome ? ytChromeLink("?steps=1") : "#steps"; if (!ytNeedsChrome) a.addEventListener("click", function () { enteredFromPage = true; }); box.appendChild(a); if (ytNeedsChrome) box.appendChild(el("p", "warn", "Google sign-in may not work inside this app, so the steps continue in Chrome.")); }
     else { box.appendChild(el("div", "cta off", "Android version coming soon")); }
   }
   if (isIos) { if (APP_STORE) ios(); else { web(true); soon(); } }
-  else if (isAndroid) { android(); if (ANDROID_TEST && !PLAY_PUBLIC) box.appendChild(el("p", "note", "We need 100 testers before the game can launch publicly on Google Play. Join now and help us get there.")); web(false); }
+  else if (isAndroid) { if (WEB) { web(true); android("cta gray"); } else android(); if (ANDROID_TEST && !PLAY_PUBLIC) box.appendChild(el("p", "note", "We need 100 testers before the game can launch publicly on Google Play. Join now and help us get there.")); }
   else { web(true); if (APP_STORE) ios(); else soon(); }
   $("early").hidden = !isAndroid || PLAY_PUBLIC || !ANDROID_TEST;
 }
